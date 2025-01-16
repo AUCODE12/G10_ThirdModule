@@ -6,16 +6,24 @@ namespace Movie.Repositories.Services;
 public class MovieRepository : IMovieRepository
 {
     private readonly string _path;
+    private readonly string _pathExtensionFiles; // qo'shimcha
     private readonly List<MovieEntity> _movies;
 
     public MovieRepository()
     {
+        //_pathExtension = Path.Combine(Directory.GetDirectories("D:\\"));
+        //_pathExtensionFiles = Path.Combine(Directory.GetCurrentDirectory(), "files.txt");
         _path = Path.Combine(Directory.GetCurrentDirectory(), "Movies.json");
         if (!File.Exists(_path))
         {
             File.WriteAllText(_path, "[]");
         }
-
+        //if (!File.Exists(_pathExtensionFiles))
+        //{
+        //    var directory = @"D:\";
+        //    File.WriteAllText(directory,  Path.Combine(Directory.GetFiles(directory)).ToString());
+        //}
+        
         _movies = GetAllMovies();
     }
 

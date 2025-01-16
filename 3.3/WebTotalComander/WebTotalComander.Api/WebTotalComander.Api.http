@@ -1,0 +1,6 @@
+@WebTotalComander.Api_HostAddress = http://localhost:5151
+
+GET {{WebTotalComander.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
