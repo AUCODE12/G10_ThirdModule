@@ -1,0 +1,6 @@
+@WebFileManagementSystem.Server_HostAddress = http://localhost:5246
+
+GET {{WebFileManagementSystem.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
