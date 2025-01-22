@@ -53,21 +53,20 @@ public class StorageController : ControllerBase
     [HttpGet("downloadFolder")]
     public FileStreamResult DownloadDirectory(string directoryPath)
     {
-        var fileName = Path.GetFileName(directoryPath);
+        var directoryName = Path.GetFileName(directoryPath);
         var stream = _storageService.DownloadDirectory(directoryPath);
         try
         {
             var res = new FileStreamResult(stream, "application/octet-stream")
             {
-                FileDownloadName = fileName + ".zip"
+                FileDownloadName = directoryName + ".zip"
             };
             return res;
         }
         finally
-        {
-            _storageService.DeleteDirectory(directoryPath + ".zip");
+        { 
+            _storageService.DeleteFile(directoryPath + ".zip");
         }
-
     }
 
     [HttpGet("deleteFolder")]

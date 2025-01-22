@@ -75,8 +75,11 @@ public class LocalStorageBrokerService : IStorageBrokerService
 
         var zip = directoryPath + ".zip";
 
-        ZipFile.CreateFromDirectory(directoryPath, zip);
-        return new FileStream(zip, FileMode.Open, FileAccess.Read);
+        if (!File.Exists(zip))
+        {
+            ZipFile.CreateFromDirectory(directoryPath, zip);
+        }
+        return new FileStream(zip, FileMode.OpenOrCreate, FileAccess.ReadWrite);
     }
 
     public Stream DownloadFile(string filePath)
@@ -122,14 +125,11 @@ public class LocalStorageBrokerService : IStorageBrokerService
         byte[] buffer = new byte[bytes];
         int bytesRead;
 
-        using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
         {
-            while(true)
+            while((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
             {
-                bytesRead = fileStream.Read(buffer, 0, buffer.Length);
-                if (bytesRead <= 0) break;
-
-                stream.CopyTo(fileStream, bytesRead);
+                fileStream.Write(buffer, 0, bytesRead);
             }
         }
     }

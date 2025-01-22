@@ -16,18 +16,19 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
+        
+        // abstraction interface (DI)
         builder.Services.AddScoped<IStorageService, StorageService>();
         builder.Services.AddSingleton<IStorageBrokerService, LocalStorageBrokerService>();
         //builder.Services.AddSingleton<IStorageBrokerService, AwsStorageService>();
         //builder.Services.AddSingleton<IStorageService, StorageService>();
         //builder.Services.AddTransient<IStorageService, StorageService>();
 
+        // file yuklash hajmini oshirish
         builder.WebHost.ConfigureKestrel(options =>
         {
             options.Limits.MaxRequestBodySize = long.MaxValue;
         });
-
         builder.Services.Configure<FormOptions>(options =>
         {
             options.ValueLengthLimit = int.MaxValue;
