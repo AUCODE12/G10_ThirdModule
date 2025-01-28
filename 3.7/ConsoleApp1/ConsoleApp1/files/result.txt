@@ -1,0 +1,10 @@
+Thread Id: 7 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test1.txt | Count Of Digits: 293
+Thread Id: 8 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test10.txt | Count Of Digits: 996
+Thread Id: 13 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test6.txt | Count Of Digits: 921
+Thread Id: 11 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test4.txt | Count Of Digits: 921
+Thread Id: 9 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test2.txt | Count Of Digits: 322
+Thread Id: 14 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test7.txt | Count Of Digits: 1239
+Thread Id: 10 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test3.txt | Count Of Digits: 604
+Thread Id: 12 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test5.txt | Count Of Digits: 920
+Thread Id: 15 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test8.txt | Count Of Digits: 1238
+Thread Id: 16 | Path: D:\Projects\G10_ThirdModule\3.7\ConsoleApp1\ConsoleApp1\files\test9.txt | Count Of Digits: 1128

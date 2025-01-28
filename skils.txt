@@ -41,5 +41,7 @@
 41. null coalescing => ??, ternary operator => ?
 42. LINQ
 43. ASP.NET core wep api
-44. File, FileStream, Stream, (Directory, Path), StreamWriter, StreamReader
-
+44. File, FileStream, Stream, (Directory, Path), StreamWriter, StreamReader (Filelar bilan ishlah)
+45. HttpClient (api basic)
+56. Thread
+57. Regex
