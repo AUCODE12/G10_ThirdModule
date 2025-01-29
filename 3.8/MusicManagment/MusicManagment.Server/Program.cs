@@ -1,4 +1,7 @@
 
+using MusicManagement.Repository.Services;
+using MusicManagement.Service.Sevices;
+
 namespace MusicManagment.Server
 {
     public class Program
@@ -13,6 +16,9 @@ namespace MusicManagment.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IMusicService, MusicService>();
+            builder.Services.AddSingleton<IMusicRepository, MusicRepository>();
 
             var app = builder.Build();
 

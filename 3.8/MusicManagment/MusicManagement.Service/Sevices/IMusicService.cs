@@ -5,15 +5,10 @@ namespace MusicManagement.Service.Sevices;
 public interface IMusicService
 {
     Task<Guid> AddMusicAsync(MusicDto musicDto);
-
     Task DeleteMusicAsync(Guid id);
-
     Task UpdateMusicAsync(MusicDto updateMusicDto);
-
     Task<MusicDto> GetMusicByIdAsync(Guid id);
-
     Task<List<MusicDto>> GetAllMusicAsync();
-
     Task<List<MusicDto>> GetAllMusicByAuthorNameAsync(string name);
     Task<MusicDto> GetMostLikedMusicAsync();
     Task<MusicDto> GetMusicByNameAsync(string name);
