@@ -1,0 +1,31 @@
+2. 
+public class Book
+{
+    public Guid Id { get; set; }
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Pages { get; set; }
+    public double Rating { get; set; } 
+    public int NumberOfCopiesSold { get; set; } // nechta nusxada sotilganini soni
+    public DateTime PublishedDate { get; set; }
+}
+
+Qilinishi kk bo'lgan ishlar.
+* Githubga joylansin. Gitignore bo'lsin shart
+* Hamma ma'lumotlar json filega saqlansin
+* Service Repository structuradan fo'ydalaning
+* Dto lar ishlatilsin
+* CRUD
+* List<BookDto> GetAllBooksByAuthor(string author); 
+* BookDto GetTopRatedBook(); // rating eng baland kitob qaytarilsin
+* List<BookDto> GetBooksPublishedAfterYear(int year); // year yilidan keyin nashr bo'lgan kitoblarni qaytarilsin
+* BookDto GetMostPopularBook(); // eng ko'p sotilgan kitob qaytarilsin
+* List<BookDto> SearchBooksByTitle(string keyword); // titleda keyword qatnashgan kitoblar royxati qaytsin
+* List<BookDto> GetBooksWithinPageRange(int minPages, int maxPages);
+* int GetTotalCopiesSoldByAuthor(string author); // author ga tegishli sotilgan kitoblar soni qaytarilsin
+* List<BookDto> GetBooksSortedByRating(); // ratinga qarab sortlab bering. Kattadan kichikga
+* List<BookDto> GetRecentBooks(int years); // shu yil ichida nashr qilingan kitoblar royxati qaytarilsin.
+
+* Service bo'limda BookDto uchun quyidagi extension methodlarni yozing alohida extensions degan folderni ichida bo'lsin.
+* BookDto uchun Pages ni qaytaradigan
+* List<BookDto> uchun listdagi barcha booklarni NumberOfCopiesSold larini yeg'indisini qaytaradigan

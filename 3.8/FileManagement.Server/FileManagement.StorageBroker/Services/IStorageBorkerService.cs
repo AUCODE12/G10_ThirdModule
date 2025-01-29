@@ -8,15 +8,11 @@ public interface IStorageBorkerService
 
     Task<Stream> DownloadFileAsync(string filePath);
 
-    //
-
     Task CreateDirectoryAsync(string directoryPath);
 
     Task DeleteDirectoryAsync(string directoryPath);
 
     Task<Stream> DownloadDirectoryAsync(string directoryPath);
-
-    //
 
     //List<string> GetDirectoriesAsync();
 

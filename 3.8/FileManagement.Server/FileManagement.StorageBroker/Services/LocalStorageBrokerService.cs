@@ -6,6 +6,7 @@ namespace FileManagement.StorageBroker.Services;
 public class LocalStorageBrokerService : IStorageBorkerService
 {
     private string _dataPath;
+
     public LocalStorageBrokerService()
     {
         _dataPath = Path.Combine(Directory.GetCurrentDirectory(), "data");
@@ -35,6 +36,7 @@ public class LocalStorageBrokerService : IStorageBorkerService
 
     public async Task<Stream> DownloadDirectoryAsync(string directoryPath)
     {
+        if (string.IsNullOrEmpty(directoryPath)) throw new Exception("Error");
         if (Path.GetExtension(directoryPath) != string.Empty) throw new Exception("DirectoryPath is not directory");
         directoryPath = Path.Combine(_dataPath, directoryPath);
         if (!Directory.Exists(directoryPath)) throw new Exception();
@@ -48,7 +50,6 @@ public class LocalStorageBrokerService : IStorageBorkerService
         return stream;
     }
 
-    //
     public async Task DeleteFileAsync(string filePath)
     {
         filePath = Path.Combine(_dataPath, filePath);
@@ -58,6 +59,7 @@ public class LocalStorageBrokerService : IStorageBorkerService
 
     public async Task<Stream> DownloadFileAsync(string filePath)
     {
+        if (string.IsNullOrEmpty(filePath)) throw new Exception("Error");
         filePath = Path.Combine(_dataPath, filePath);
         if (!File.Exists(filePath)) throw new Exception();
         var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
@@ -77,9 +79,9 @@ public class LocalStorageBrokerService : IStorageBorkerService
         }
     }
 
-    //
-    public List<string> GetAllFilesAndDirectoriesAsync(string directoryPath)
+    public async Task<List<string>> GetAllFilesAndDirectoriesAsync(string? directoryPath)
     {
+        directoryPath = directoryPath ?? string.Empty;
         directoryPath = Path.Combine(_dataPath ,directoryPath);
         var parentPath = Directory.GetParent(directoryPath);
         if(!Directory.Exists(parentPath.FullName)) throw new Exception();
