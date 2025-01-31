@@ -22,7 +22,7 @@ public class MusicRepository : IMusicRepository
     public async Task<Guid> AddMusicAsync(Music music)
     {
         _music.Add(music);
-        SaveData();
+        await SaveDataAsync();
         return music.Id;
     }
 
@@ -30,14 +30,14 @@ public class MusicRepository : IMusicRepository
     {
         var music = await GetMusicByIdAsync(id);
         _music.Remove(music);
-        SaveData();
+        await SaveDataAsync();
     }
 
     public async Task<List<Music>> GetAllMusicAsync()
     {
         var musicJson = await File.ReadAllTextAsync(_baseFile);
         var music = JsonSerializer.Deserialize<List<Music>>(musicJson);
-        return music;
+        return music ?? new List<Music>();
     }
 
     public async Task<Music> GetMusicByIdAsync(Guid id)
@@ -53,12 +53,12 @@ public class MusicRepository : IMusicRepository
         var music = await GetMusicByIdAsync(updatedMusic.Id);
         var index = _music.IndexOf(music);
         _music[index] = updatedMusic;
-        SaveData();
+        await SaveDataAsync();
     }
 
-    private void SaveData()
+    private async Task SaveDataAsync()
     {
         var musicJson = JsonSerializer.Serialize(_music);
-        File.WriteAllTextAsync(_baseFile, musicJson);
+        await File.WriteAllTextAsync(_baseFile, musicJson);
     }
 }

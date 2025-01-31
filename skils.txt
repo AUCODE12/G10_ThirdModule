@@ -45,3 +45,5 @@
 45. HttpClient (api basic)
 56. Thread
 57. Regex
+58. Async await task
+59. delegate
