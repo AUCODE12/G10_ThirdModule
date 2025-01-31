@@ -43,7 +43,7 @@
 43. ASP.NET core wep api
 44. File, FileStream, Stream, (Directory, Path), StreamWriter, StreamReader (Filelar bilan ishlah)
 45. HttpClient (api basic)
-56. Thread
+56. Thread (Multethreading)
 57. Regex
 58. Async await task
 59. delegate
