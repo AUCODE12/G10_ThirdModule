@@ -12,9 +12,11 @@ public class MainContext : DbContext
         //base.OnConfiguring(optionsBuilder);
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=MusicManagement;User Id=sa;Password=1;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;User ID=sa;Password=1;Initial Catalog=MusicManagment;TrustServerCertificate=True;");
         }
     }
+
+    //public MainContext(DbContextOptions<MainContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -12,7 +12,7 @@ using MusicManagement.DataAccess;
 namespace MusicManagement.DataAccess.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20250201071534_InitialCreation")]
+    [Migration("20250201203803_InitialCreation")]
     partial class InitialCreation
     {
         /// <inheritdoc />

@@ -1,4 +1,5 @@
 
+using Microsoft.EntityFrameworkCore;
 using MusicManagement.DataAccess;
 using MusicManagement.Repository.Services;
 using MusicManagement.Service.Sevices;
@@ -22,6 +23,12 @@ namespace MusicManagment.Server
             //builder.Services.AddSingleton<IMusicRepository, MusicBrokerFile>(); 
             builder.Services.AddScoped<IMusicRepository, MusicRepository>(); //sql
             builder.Services.AddSingleton<MainContext>();
+
+            //var connectionString = builder.Configuration.GetConnectionString("myConxStr");
+
+            //// DbContext ni ro‘yxatga olish
+            //builder.Services.AddDbContext<MainContext>(options =>
+            //    options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 

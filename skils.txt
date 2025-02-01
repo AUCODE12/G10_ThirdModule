@@ -47,5 +47,7 @@
 57. Regex
 58. Async await task
 59. delegate
-60. sql
+60. sql server, (sql -> migrations)
 61. ORM
+62. ef core (tools, design, sqlserver)
+
