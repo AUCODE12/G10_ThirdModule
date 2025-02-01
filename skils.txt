@@ -47,3 +47,5 @@
 57. Regex
 58. Async await task
 59. delegate
+60. sql
+61. ORM

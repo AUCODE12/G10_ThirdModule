@@ -1,64 +1,49 @@
-﻿using MusicManagement.DataAccess.Entities;
-using System.Text.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using MusicManagement.DataAccess;
+using MusicManagement.DataAccess.Entities;
 
 namespace MusicManagement.Repository.Services;
 
 public class MusicRepository : IMusicRepository
 {
-    private string _baseFile;
-    private string _baseDirectory;
-    private List<Music> _music;
-    public MusicRepository()
+    private readonly MainContext _mainContext;
+
+    public MusicRepository(MainContext mainContext)
     {
-        _baseFile = Path.Combine(Directory.GetCurrentDirectory(), "data_base", "Music.json");
-        _baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "data_base");
-
-        if (!Directory.Exists(_baseDirectory)) Directory.CreateDirectory(_baseDirectory);
-        if (!File.Exists(_baseFile)) File.WriteAllTextAsync(_baseFile, "[]");
-
-        _music = GetAllMusicAsync().Result;
+        _mainContext = mainContext;
     }
 
     public async Task<Guid> AddMusicAsync(Music music)
     {
-        _music.Add(music);
-        await SaveDataAsync();
+        await _mainContext.AddAsync(music);
+        await _mainContext.SaveChangesAsync();
         return music.Id;
     }
 
     public async Task DeleteMusicAsync(Guid id)
     {
         var music = await GetMusicByIdAsync(id);
-        _music.Remove(music);
-        await SaveDataAsync();
+        _mainContext.Music.Remove(music);
+        await _mainContext.SaveChangesAsync();
     }
 
     public async Task<List<Music>> GetAllMusicAsync()
     {
-        var musicJson = await File.ReadAllTextAsync(_baseFile);
-        var music = JsonSerializer.Deserialize<List<Music>>(musicJson);
-        return music ?? new List<Music>();
+        var allMusic = await _mainContext.Music.ToListAsync();
+        return allMusic;
     }
 
     public async Task<Music> GetMusicByIdAsync(Guid id)
     {
-        var music = _music.FirstOrDefault(m => m.Id == id);
-        await Task.Delay(0); // 
-        if (music is null) throw new Exception("not found");
+        var music = await _mainContext.Music.FirstOrDefaultAsync(m => m.Id == id);
+        if (music == null) throw new Exception();
         return music;
     }
 
     public async Task UpdateMusicAsync(Music updatedMusic)
     {
         var music = await GetMusicByIdAsync(updatedMusic.Id);
-        var index = _music.IndexOf(music);
-        _music[index] = updatedMusic;
-        await SaveDataAsync();
-    }
-
-    private async Task SaveDataAsync()
-    {
-        var musicJson = JsonSerializer.Serialize(_music);
-        await File.WriteAllTextAsync(_baseFile, musicJson);
+        _mainContext.Music.Update(music);
+        await _mainContext.SaveChangesAsync();
     }
 }

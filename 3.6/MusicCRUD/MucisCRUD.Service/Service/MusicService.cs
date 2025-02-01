@@ -7,7 +7,6 @@ namespace MucisCRUD.Service.Service;
 public class MusicService : IMusicService
 {
     private readonly IMusicRepository _musicRepository;
-
     public MusicService()
     {
         _musicRepository = new MusicRepository();
@@ -19,7 +18,6 @@ public class MusicService : IMusicService
         var idRes = await _musicRepository.AddMusicAsync(music);
         return idRes;
     }
-
     public async Task DeleteMusicAsync(Guid id)
     {
         await _musicRepository.DeleteMusicAsync(id);

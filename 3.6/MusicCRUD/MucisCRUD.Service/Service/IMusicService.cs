@@ -8,7 +8,6 @@ public interface IMusicService
     Task DeleteMusicAsync(Guid id);
     Task<List<MusicDto>> GetAllMusicAsync();
     Task UpdateMusicAsync(MusicDto musicDto);
-
     Task<List<MusicDto>> GetAllMusicByAuthorNameAsync(string name);
     Task<MusicDto> GetMostLikedMusicAsync();
     Task<MusicDto> GetMusicByNameAsync(string name);

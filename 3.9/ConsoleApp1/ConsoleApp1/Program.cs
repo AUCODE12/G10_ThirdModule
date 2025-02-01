@@ -29,7 +29,6 @@ internal class Program
         #endregion
         // 🚀 Math & Number Functions
         Func<int, int, int, int> addFunc = Add;
-        Console.WriteLine(addFunc(1, 2, 3));
         Func<int, int, int, int, int> multiplyFunc = Multiply;
         Func<double, double, double> divideFunc = Divide;
         Func<int, int, (int, int)> sumAndProductFunc = SumAndProduct;

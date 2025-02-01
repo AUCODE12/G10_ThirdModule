@@ -32,21 +32,18 @@ public class MusicRepository : IMusicRepository
         SaveData();
         return music.Id;
     }
-
     public async Task DeleteMusicAsync(Guid id)
     {
         var music = GetMusicByIdAsync(id);
         _music.Remove(music.Result);
         SaveData();
     }
-
     public async Task<List<Music>> GetAllMusicAsync()
     {
         var musicJson = File.ReadAllText(_filePath);
         var musicList = JsonSerializer.Deserialize<List<Music>>(musicJson);
         return musicList;
     }
-
     public async Task<Music> GetMusicByIdAsync(Guid id)
     {
         var music = _music.FirstOrDefault(x => x.Id == id);
@@ -56,8 +53,7 @@ public class MusicRepository : IMusicRepository
         }
 
         return music;
-    }
-            
+    } 
     public async Task UpdateMusicAsync(Music music)
     {
         var musicFromDb = GetMusicByIdAsync(music.Id);
@@ -65,7 +61,6 @@ public class MusicRepository : IMusicRepository
         _music[index] = music;
         SaveData();
     }
-
     private void SaveData()
     {
         var musicJson = JsonSerializer.Serialize(_music);
