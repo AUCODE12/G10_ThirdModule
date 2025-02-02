@@ -1,56 +1,34 @@
-﻿using StudentManagementSystem.DataAccess.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentManagementSystem.DataAccess;
+using StudentManagementSystem.DataAccess.Entities;
 
 namespace StudentManagementSystem.Repositories.Services;
 
 public class AdminRepository : IAdminRepository
 {
-    private string _data;
-    private string _student;
-    private string _teacher;
-
-    public AdminRepository()
+    private readonly MainContext _mainContext;
+    public AdminRepository(MainContext mainContext)
     {
-         _data = Path.Combine(Directory.GetCurrentDirectory(), "data");
-        if (!Directory.Exists(_data)) Directory.CreateDirectory(_data);
-        _student = Path.Combine(_data, "students_data");
-        if (!Directory.Exists(_student)) Directory.CreateDirectory(_student);
-        _teacher = Path.Combine(_data, "teacher_data");
+        _mainContext = mainContext;
     }
 
-    public void AddStudent(Student student)
+    public async Task<Guid> AddTeacherAsync(Teacher teacher)
     {
-        throw new NotImplementedException();
+        await _mainContext.AddAsync(teacher);
+        await _mainContext.SaveChangesAsync();
+        return teacher.Id;
     }
 
-    public List<Student> GetAllStudents()
+    public async Task<List<Teacher>> GetAllTeachersAsync()
     {
-        throw new NotImplementedException();
+        var teachers = await _mainContext.Teacher.ToListAsync();
+        return teachers;
     }
 
-    public Student GetStudentById(Guid id)
+    public async Task<Teacher> GetTeacherByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
-    }
-
-    public void AddTeacher(Teacher teacher)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<Teacher> GetAllTeachers()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Teacher GetTeacherById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-
-    //
-    private void SaveStudentData()
-    {
-
+        var teacher = await _mainContext.Teacher.FirstOrDefaultAsync(x => x.Id == id);
+        if (teacher is null) throw new Exception();
+        return teacher;
     }
 }

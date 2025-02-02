@@ -4,17 +4,10 @@ namespace StudentManagementSystem.Repositories.Services;
 
 public interface IAdminRepository
 {
-    void AddStudent(Student student);
+    Task<Guid> AddTeacherAsync(Teacher teacher);
 
-    List<Student> GetAllStudents();
+    Task<List<Teacher>> GetAllTeachersAsync();
 
-    Student GetStudentById(Guid id);
+    Task<Teacher> GetTeacherByIdAsync(Guid id);
 
-    void AddTeacher(Teacher teacher);
-
-    List<Teacher> GetAllTeachers();
-
-    Teacher GetTeacherById(Guid id);
-
-    //void ChangeDetails();
 }

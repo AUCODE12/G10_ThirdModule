@@ -1,6 +1,12 @@
-﻿namespace StudentManagementSystem.Repositories.Services;
+﻿using StudentManagementSystem.DataAccess.Entities;
+
+namespace StudentManagementSystem.Repositories.Services;
 
 public interface ITeacherRepository
 {
-    void AddRemarksForStudent();
+    Task<Guid> AddStudentAsync(Student student);
+
+    Task<List<Student>> GetAllStudentsAsync();
+
+    Task<Student> GetStudentByIdAsync(Guid id);
 }
