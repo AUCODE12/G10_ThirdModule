@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using StudentManagementSystem.Services.DTOs;
 using StudentManagementSystem.Services.Services;
 
 namespace StudentManagementSystem.Server.Controllers;
@@ -8,12 +8,32 @@ namespace StudentManagementSystem.Server.Controllers;
 [ApiController]
 public class AdminController : ControllerBase
 {
-    private readonly ITeacherService _teacherService;
+    private readonly IAdminService _adminService;
 
-    public AdminController(ITeacherService teacherService)
+    public AdminController(IAdminService adminService)
     {
-        _teacherService = teacherService;
+        _adminService = adminService;
     }
 
 
+    [HttpPost("addTeacher")]
+    public async Task<Guid> AddTeacher(TeacherDto teacherDto)
+    {
+        var teacher = await _adminService.AddTeacherAsync(teacherDto);
+        return teacher;
+    }
+
+    [HttpGet("getAllTeacher")]
+    public async Task<List<TeacherDtoBase>> GetAllTeachers()
+    {
+        var teachers = await _adminService.GetAllTeachersAsync();
+        return teachers;
+    }
+
+    [HttpGet("getTeacherById/{id}")]
+    public async Task<TeacherDtoBase> GetTeacherById(Guid id)
+    {
+        var teacher = await _adminService.GetTeacherByIdAsync(id);
+        return teacher;
+    }
 }
