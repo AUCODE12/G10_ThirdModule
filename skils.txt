@@ -50,4 +50,6 @@
 60. sql server, (sql -> migrations)
 61. ORM
 62. ef core (tools, design, sqlserver)
+63. 1:1, 1:n, n:n
+64. relation ships 
 
