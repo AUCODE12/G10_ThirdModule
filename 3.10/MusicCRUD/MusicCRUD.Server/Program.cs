@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.ConfigureDatabase();
+        builder.ConfigureDatabase(); // databaseconfiguration   
 
         builder.Services.AddScoped<IMusicService, MusicService>();
         builder.Services.AddScoped<IMusicRepository, MusicRepository>();
