@@ -1,4 +1,6 @@
-﻿namespace BookWebApplication.Service.DTOs;
+﻿using BookWebApplication.DataAccess.Entities;
+
+namespace BookWebApplication.Service.DTOs;
 
 public class BookDto
 {
@@ -6,4 +8,6 @@ public class BookDto
     public string Title { get; set; } = string.Empty;
     public string Genre { get; set; } = string.Empty;
     public int AuthorId { get; set; }
+    public Author? Author { get; set; }
+    public List<Comment>? Comments { get; set; } // = new();
 }

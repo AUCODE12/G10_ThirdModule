@@ -29,7 +29,10 @@ public class BookRepository : IBookRepository
 
     public async Task<List<Book>> GetAllBooksAsync()
     {
-        return await _mainContext.Books.ToListAsync();
+        var books = await _mainContext.Books
+            .Include(b => b.Author)
+            .ToListAsync();
+        return books;
     }
 
     public async Task<Book> GetBookByIdAsync(int id)

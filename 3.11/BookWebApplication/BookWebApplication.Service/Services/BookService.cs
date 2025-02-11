@@ -47,6 +47,8 @@ public class BookService : IBookService
             Title = bookDto.Title,
             AuthorId = bookDto.AuthorId,
             Genre = bookDto.Genre,
+            //Author = bookDto.Author,
+            //Comments = bookDto.Comments
         };
     }
 
@@ -58,6 +60,8 @@ public class BookService : IBookService
             Title = book.Title,
             AuthorId = book.AuthorId,
             Genre = book.Genre,
+            Author = book.Author,
+            Comments = book.Comments
         };
     }
 }
