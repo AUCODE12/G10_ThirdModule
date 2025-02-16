@@ -52,4 +52,8 @@
 62. ef core (tools, design, sqlserver)
 63. 1:1, 1:n, n:n
 64. relation ships 
+65. fluent api, efcore loading types
+66. sql, ssms
+67. fluent.validation automapper
+68. configutions
 
