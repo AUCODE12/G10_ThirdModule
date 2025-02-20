@@ -52,8 +52,16 @@
 62. ef core (tools, design, sqlserver)
 63. 1:1, 1:n, n:n
 64. relation ships 
-65. fluent api, efcore loading types
+65. fluent api, 
 66. sql, ssms
-67. fluent.validation automapper
+67. fluent.validation 
 68. configutions
-
+69. telegram bot c#
+70. automapper
+72. efcore loading types
+73.
+74.
+75.
+76.
+77.
+78.
